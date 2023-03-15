@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Ian Bailey (Model Futures Ltd.) -->
+<!-- 2010-08-24 - IndividualTypeType and TupleTypeType added at request of DoD / Silver Bullet inc. -->
+<xs:schema xmlns="http://www.ideasgroup.org/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ism="urn:us:gov:ic:ism:v2" xmlns:dc="http://purl.org/dc/elements/1.1/" targetNamespace="http://www.ideasgroup.org/xsd" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://purl.org/dc/elements/1.1/" schemaLocation="http://dublincore.org/schemas/xmls/qdc/2006/01/06/dc.xsd"/>
+	<!--ArchitecturalDescription-->
+	<!--All XSDs derived from the IDEAS Foundation XSD shall use have this as a mandatory element, appearing as the first element in the IdeasData section -->
+	<xs:simpleType name="nameList">
+		<xs:list itemType="xs:string"/>
+	</xs:simpleType>
+	<xs:attribute name="FoundationCategory" type="xs:string"/>
+	<xs:element name="Name">
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:ID" use="required"/>
+			<xs:attribute name="namingScheme" type="xs:IDREF" use="required"/>
+			<xs:attribute name="exemplarText" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="measures">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="MeasurePoint" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="id" type="xs:ID" use="required"/>
+						<xs:attribute name="measureType" type="xs:IDREF" use="required"/>
+						<xs:attribute name="measureNamingScheme" type="xs:string" use="required"/>
+						<xs:attribute name="measureValue" type="xs:decimal" use="required"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="MeasureRange" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="id" type="xs:ID" use="required"/>
+						<xs:attribute name="measureType" type="xs:IDREF" use="required"/>
+						<xs:attribute name="measureNamingScheme" type="xs:string" use="required"/>
+						<xs:attribute name="lowerValue" type="xs:decimal" use="required"/>
+						<xs:attribute name="upperValue" type="xs:decimal" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:group>
+	<xs:complexType name="Thing">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="Thing"/>
+	</xs:complexType>
+	<xs:complexType name="Individual">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:group ref="measures" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="Individual"/>
+	</xs:complexType>
+	<xs:complexType name="Type">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="Type"/>
+	</xs:complexType>
+	<xs:complexType name="Powertype">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="Powertype"/>
+	</xs:complexType>
+	<xs:complexType name="IndividualType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:group ref="measures" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="IndividualType"/>
+	</xs:complexType>
+	<xs:complexType name="IndividualTypeType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:group ref="measures" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="IndividualTypeType"/>
+	</xs:complexType>
+	<xs:complexType name="NamingScheme">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="NamingScheme"/>
+	</xs:complexType>
+	<xs:complexType name="UniqueNamingScheme">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="UniqueNamingScheme"/>
+	</xs:complexType>
+	<xs:complexType name="tuple">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="tuplePlaces" type="xs:IDREFS"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="tuple"/>
+	</xs:complexType>
+	<xs:complexType name="couple">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="couple"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="typeInstance">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="typeInstance"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="powertypeInstance">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="powertypeInstance"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="namingSchemeInstance">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="namingSchemeInstance"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="namedBy">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="namedBy"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="describedBy">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="namedBy"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="representedBy">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="namedBy"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="wholePart">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="wholePart"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="superSubtype">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="superSubtype"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="triple">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="triple"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace3" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="quadruple">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="quadruple"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace3" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace4" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="quintuple">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="quintuple"/>
+		<xs:attribute name="tuplePlace1" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace2" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace3" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace4" type="xs:IDREF" use="required"/>
+		<xs:attribute name="tuplePlace5" type="xs:IDREF" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="TupleType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="placeTypes" type="xs:IDREFS"/>
+			<xs:element name="placeNames" type="nameList" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="TupleType"/>
+	</xs:complexType>
+	<xs:complexType name="TupleTypeType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="placeTypes" type="xs:IDREFS"/>
+			<xs:element name="placeNames" type="nameList" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="TupleTypeType"/>
+	</xs:complexType>
+	<xs:complexType name="CoupleType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="CoupleType"/>
+		<xs:attribute name="place1Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place2Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place1Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place2Name" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="WholePartType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="WholePartType"/>
+		<xs:attribute name="place1Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place2Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place1Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place2Name" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="TripleType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="TripleType"/>
+		<xs:attribute name="place1Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place2Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place3Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place1Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place2Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place3Name" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="QuadrupleType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="QuadrupleType"/>
+		<xs:attribute name="place1Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place2Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place3Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place4Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place1Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place2Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place3Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place4Name" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="QuintupleType">
+		<xs:sequence>
+			<xs:any namespace="http://purl.org/dc/elements/1.1/" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="Name" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute ref="FoundationCategory" use="required" fixed="QuintupleType"/>
+		<xs:attribute name="place1Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place2Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place3Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place4Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place5Type" type="xs:IDREF" use="required"/>
+		<xs:attribute name="place1Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place2Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place3Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place4Name" type="xs:string" use="optional"/>
+		<xs:attribute name="place5Name" type="xs:string" use="optional"/>
+	</xs:complexType>
+</xs:schema>

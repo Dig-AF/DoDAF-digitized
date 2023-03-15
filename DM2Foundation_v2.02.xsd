@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by David M McDaniel (Silver Bullet Solutions, Inc.) -->
+<xs:schema xmlns="http://www.ideasgroup.org/dm2" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ism="urn:us:gov:ic:ism:v2" xmlns:ideas="http://www.ideasgroup.org/xsd" xmlns:dc="http://purl.org/dc/elements/1.1/" targetNamespace="http://www.ideasgroup.org/dm2" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="urn:us:gov:ic:ism:v2" schemaLocation="IC-ISM-v2.1.xsd"/>
+	<xs:import namespace="http://www.ideasgroup.org/xsd" schemaLocation="IdeasFoundation.xsd"/>
+	<xs:element name="InformationPedigree">
+		<xs:complexType>
+			<xs:sequence maxOccurs="unbounded">
+				<xs:choice>
+					<!-- This section is generated from the model according to the IDEAS XSD production rules -->
+					<xs:element name="NamingScheme">
+						<xs:annotation>
+							<xs:documentation>An NameType and a RepresentationScheme whose members are intentionally Names. 
+
+Examples:
+
+ISO 3166 Country Codes
+IdeasNames</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:NamingScheme">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of NameType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="PedigreeInformation">
+						<xs:annotation>
+							<xs:documentation>Information describing pedigree</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of Information -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="PedigreeInformationType">
+						<xs:annotation>
+							<xs:documentation>The Powertype of PedigreeInformation.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualTypeType">
+									<xs:attribute name="exemplar" type="xs:string"/>
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of InformationType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Activity">
+						<xs:annotation>
+							<xs:documentation>Work, not specific to a single organization, weapon system or individual that transforms inputs (Resources) into outputs (Resources) or changes their state.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of IndividualType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="activityConsumesResource">
+						<xs:annotation>
+							<xs:documentation>Represents that an activity consumes a resource</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:WholePartType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of OverlapType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="activityProducesResource">
+						<xs:annotation>
+							<xs:documentation>Represents that an activity produces a resource</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:WholePartType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of BeforeAfterType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="ruleConstrainsActivity">
+						<xs:annotation>
+							<xs:documentation>An overlap between a Rule and the Activities it allows</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:superSubtype">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of superSubtype -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="measureOfTypeActivity">
+						<xs:annotation>
+							<xs:documentation>A measureOfType that relates an Activity to a Measure</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:superSubtype">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of measureOfType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Measure">
+						<xs:annotation>
+							<xs:documentation>The magnitude of some attribute of an individual.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualType">
+									<xs:attribute name="numericValue" type="xs:string"/>
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of Property -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="LocationType">
+						<xs:annotation>
+							<xs:documentation>The powertype of Location</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of IndividualType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Rule">
+						<xs:annotation>
+							<xs:documentation>A principle or condition that governs behavior; a prescribed guide for conduct or action  </xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of Guidance -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="MeasureTypeUnitsOfMeasure">
+						<xs:annotation>
+							<xs:documentation>The subtype of MeasureType that has units.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualTypeType">
+									<xs:attribute name="units" type="xs:string"/>
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of MeasureType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Performer">
+						<xs:annotation>
+							<xs:documentation>Any entity - human, automated, or any aggregation of human and/or automated - that performs an activity and provides a capability.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:IndividualType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of Resource -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="measureOfTypeResource">
+						<xs:annotation>
+							<xs:documentation>ResourceType is a member of Measure</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:superSubtype">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of measureOfType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="activityPerformedByPerformer">
+						<xs:annotation>
+							<xs:documentation>An overlap between a Performer and an Activity that is non-specific as to whether:
+1. the Activity is solely performed by the Performer
+2. the Activity is performed by several Performers
+3. the Performer performs only this Activity
+4. the Performer performs other Activities</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:WholePartType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of OverlapType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="resourceInLocationType">
+						<xs:annotation>
+							<xs:documentation>The relationship that describes the location of a performer or type of performer</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:WholePartType">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of WholePartType -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="Location">
+						<xs:annotation>
+							<xs:documentation>A point or extent in space that may be referred to physically or logically.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:Individual">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of Individual -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="typeInstance">
+						<xs:annotation>
+							<xs:documentation>A couple that asserts that a Thing is a member of a Type.
+
+Examples:
+
+* I am a member of the type People (hard to believe, but true)
+* Field Marshal is of the type Rank
+* Viscount Bernard Montgomery is of the type Person
+* The state of Viscount Bernard Montgomery from 1945 to his death is of type Field Marshal</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="ideas:typeInstance">
+									<xs:attributeGroup ref="ism:SecurityAttributesOptionGroup"/>
+								</xs:extension>
+								<!-- Subtype of couple -->
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attributeGroup ref="ism:SecurityAttributesGroup"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
